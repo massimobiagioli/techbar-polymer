@@ -1,0 +1,20 @@
+{
+  "name": "01-hello",
+  "version": "0.0.0",
+  "homepage": "https://github.com/massimobiagioli/techbar-polymer",
+  "authors": [
+    "massimobiagioli <github@massimobiagioli.it>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.0.0",
+    "jquery": "~2.1.4"
+  }
+}
