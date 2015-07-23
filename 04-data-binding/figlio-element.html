@@ -1,0 +1,27 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="figlio-element">
+	
+	<template>				
+		<p>Figlio</p>
+		<span><b>Valore: </b></span><span>{{prop}}</span>
+		<br />
+		<button on-click="cambiaValore">CAMBIA VALORE FIGLIO</button>			
+	</template>
+	
+	<script>
+		Polymer({
+			is: "figlio-element",
+			properties: {
+				prop: {
+					type: String,
+					notify: true
+				}				
+			},
+			cambiaValore: function(e) {
+				this.prop = "nuovo valore figlio " + Date();
+			}
+		});	
+	</script>
+	
+</dom-module>

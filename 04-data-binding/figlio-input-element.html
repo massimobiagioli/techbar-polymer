@@ -1,0 +1,22 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="figlio-input-element">
+	
+	<template>				
+		<p>Figlio</p>		
+		<span><b>Valore: </b></span><input type="text" value="{{prop::input}}"/>
+	</template>
+	
+	<script>
+		Polymer({
+			is: "figlio-input-element",
+			properties: {
+				prop: {
+					type: String,
+					notify: true
+				}				
+			}
+		});	
+	</script>
+	
+</dom-module>

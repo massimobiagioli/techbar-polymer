@@ -1,0 +1,26 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="padre-input-element">
+	
+	<template>						
+				
+		<h1>TWO WAY BINDING (HTML INPUT)</h1>
+		<p>Padre</p>
+		<span><b>Valore: </b></span><input type="text" value="{{valore::input}}"/>
+		<br/>
+		<figlio-input-element prop="{{valore}}"></figlio-element>	
+		
+	</template>
+	
+	<script>
+		Polymer({
+			is: "padre-input-element",
+			properties: {
+				valore: {
+					type: String
+				}				
+			}
+		});	
+	</script>
+	
+</dom-module>

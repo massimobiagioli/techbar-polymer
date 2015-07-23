@@ -1,0 +1,43 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="padre-element">
+	
+	<template>						
+				
+		<h1>TWO WAY BINDING</h1>
+		<p>Padre</p>
+		<span><b>Valore: </b></span><span>{{valore}}</span>
+		<br />
+		<button on-click="cambiaValore">CAMBIA VALORE PADRE</button>
+		<br/>
+		<figlio-element prop="{{valore}}"></figlio-element>	
+
+		<h1>ONE WAY BINDING</h1>
+		<p>Padre</p>
+		<span><b>Valore: </b></span><span>{{valore}}</span>
+		<br />
+		<button on-click="cambiaValore">CAMBIA VALORE PADRE</button>
+		<br/>
+		<figlio-element prop="[[valore]]"></figlio-element>	
+		
+	</template>
+	
+	<script>
+		Polymer({
+			is: "padre-element",
+			properties: {
+				valore: {
+					type: String,
+					observer: 'valoreChanged'
+				}				
+			},
+			cambiaValore: function(e) {
+				this.valore = "nuovo valore padre " + Date();
+			},
+			valoreChanged: function(newValue, oldValue) {
+				console.log("CHANGED - old value: " + oldValue + " - new value: " + newValue);
+			}
+		});	
+	</script>
+	
+</dom-module>
