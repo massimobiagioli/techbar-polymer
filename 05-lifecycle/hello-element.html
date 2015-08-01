@@ -1,0 +1,55 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="hello-element">
+	
+	<style>
+		p {
+			color: #F00;
+		}
+	</style>
+	
+	<template>
+		<p>Hello, Polymer!</p>
+	</template>
+	
+	<script>
+		HelloElement = Polymer({
+			is: "hello-element",
+			
+			properties: {
+				dummy: {
+					type: String,
+					reflectToAttribute: true
+				}				
+			},
+			
+			factoryImpl: function(dummy) {
+				this.dummy = dummy;
+    			console.log("factoryImpl");
+  			},
+			
+			created: function() {
+		    	console.log(this.localName + '#' + this.id + ' was created');
+		  	},
+		
+		  	attached: function() {
+		    	console.log(this.localName + '#' + this.id + ' was attached - dummy = ' + this.dummy);
+		  	},
+
+  			detached: function() {
+    			console.log(this.localName + '#' + this.id + ' was detached');
+  			},
+
+  			attributeChanged: function(name, type) {
+    			console.log(this.localName + '#' + this.id + ' attribute ' + name +
+      				' was changed to ' + this.getAttribute(name));
+  			},
+			  
+			ready: function() {
+  				console.log("DOM ready");
+			}			  
+			
+		});	
+	</script>
+	
+</dom-module>
