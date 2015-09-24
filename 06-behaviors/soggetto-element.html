@@ -1,0 +1,17 @@
+<dom-module id="soggetto-element">
+	
+	<template>
+		<h2>SOGGETTO GENERICO</h2>
+		<span>Nome: </span><span><b>{{nome}}</b></span>
+		<br/>
+		<span>Cognome: </span><span><b>{{cognome}}</b></span>
+	</template>
+	
+	<script>
+		Polymer({
+			is: "soggetto-element",
+			behaviors: [SoggettoBehavior]
+		});	
+	</script>
+	
+</dom-module>

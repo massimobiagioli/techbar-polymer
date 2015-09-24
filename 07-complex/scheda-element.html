@@ -1,0 +1,41 @@
+<link rel="import" href="datainput-element.html">
+
+<dom-module id="complex-element">
+	
+	<style>
+   		.tablelayout {
+	        display: table;
+    	}
+	</style>
+	
+	<template>
+		<div class="tablelayout">
+			
+			<datainput-element 
+				label="Nome"
+      			inputtype="text"
+      			inputvalue="">
+    		</datainput-element>
+			
+			<datainput-element 
+				label="Cognome"
+      			inputtype="text"
+      			inputvalue="">
+    		</datainput-element>
+			
+			<datainput-element 
+		      label="Contratto a tempo indeterminato"
+		      inputtype="checkbox"
+		      inputvalue="true">
+		    </datainput-element>
+			
+		</div>
+	</template>
+	
+	<script>
+		Polymer({
+			is: "scheda-element",
+		});	
+	</script>
+	
+</dom-module>
