@@ -1,0 +1,29 @@
+<dom-module id="tabpane-element">
+	
+	<template>
+		<div id="default">
+			<ul>
+				<li><a href="#ricerca">Ricerca</a></li>
+				<li><a href="#dettaglio">Dettaglio</a></li>				
+			</ul>
+			<div>
+				<div id="ricerca">
+					<content select=".ricerca"/></content>
+				</div>
+				<div id="dettaglio">
+					<content select=".dettaglio"></content>
+				</div>
+			</div>
+		</div>
+	</template>
+	
+	<script>
+		Polymer({
+			is: "tabpane-element",
+			attached: function() {
+		    	$('#default').puitabview();
+		  	}
+		});	
+	</script>
+	
+</dom-module>
