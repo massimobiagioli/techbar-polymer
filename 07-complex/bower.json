@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#1.0.0",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "jqueryui": "~1.11.4"
   }
 }

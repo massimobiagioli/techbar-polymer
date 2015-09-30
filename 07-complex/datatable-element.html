@@ -1,0 +1,46 @@
+<dom-module id="datatable-element">
+		
+	<template>
+		<div id="dt"></div>		
+	</template>
+	
+	<script>
+		Polymer({
+			is: "datatable-element",
+			properties: {
+				caption: {
+					type: String
+				},
+				dataproviderfunction: {
+					type: String
+				},
+				currentrow: {
+					type: Object,
+					observer: 'currentrowChanged'
+				}	
+			},
+			attached: function() {
+		  		var that = this;
+				this.dataproviderfunctionCall = new Function('return ' + this.dataproviderfunction);
+				$('#dt').puidatatable({
+					caption: this.caption,
+					columns: [
+						{field:'nome', headerText: 'Nome', sortable:true},
+						{field:'cognome', headerText: 'Cognome', sortable:true},
+						{field:'cti', headerText: 'Contr. Tempo Indet.', sortable:true}
+					],
+					datasource: this.dataproviderfunctionCall(),
+					selectionMode: 'single',
+					rowSelect: function(event, data) {						
+						that.currentrow = data;
+						
+					}
+				});
+			},
+			currentrowChanged: function(newValue, oldValue) {
+				console.log("currentrowChanged - old value: " + oldValue + " - new value: " + newValue);
+			}
+		});	
+	</script>
+	
+</dom-module>
