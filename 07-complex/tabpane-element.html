@@ -29,7 +29,11 @@
 		Polymer({
 			is: "tabpane-element",
 			attached: function() {
-		    	$('#default').puitabview();
+		    	$('#default').puitabview({
+					change: function(event, ui) {
+						//
+					}
+				});
 		  	}
 		});	
 	</script>

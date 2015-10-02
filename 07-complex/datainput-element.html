@@ -22,7 +22,7 @@
 	            <span class="label">{{label}}</span>
 	        </div>
 	        <div class="tablecell">
-	            <span><input id="userinput" type="{{inputtype}}" value="{{inputvalue}}"></input></span>
+	            <span><input id="userinput" type="{{inputtype}}" value="{{inputvalue::input}}"></input></span>
 	        </div>
 	    </div>
 	</template>
@@ -36,10 +36,12 @@
 				},
 				inputtype: {
 					type: String,
-					value: "text"
+					value: "text",
+					notify: true
 				},
 				inputvalue: {
-					type: String
+					type: String,
+					notify: true
 				}
 			},
 			attached: function() {

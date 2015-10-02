@@ -1,0 +1,90 @@
+<dom-module id="app-element">
+	
+	<template>
+		<tabpane-element>
+			<div class="ricerca">
+				<grid-element>
+				
+					<datainput-element 
+						label="Nome"
+						inputtype="text"
+						inputvalue="{{searchparams.nome}}">
+					</datainput-element>
+					
+					<datainput-element 
+						label="Cognome"
+						inputtype="text"
+						inputvalue="{{searchparams.cognome}}">
+					</datainput-element>					
+				
+				</grid-element>
+				
+				<button on-click="search">Ricerca</button>				
+			</div>
+			
+			<div class="risultati">        
+				<datatable-element 
+					caption="Elenco persone"
+					data="[[sampledata]]",
+					searchparams="[[searchparams]]">
+				</datatable-element>  
+			</div>
+			
+			<div class="dettaglio">
+				<grid-element>
+				
+					<datainput-element 
+						label="Nome"
+						inputtype="text"
+						inputvalue="">
+					</datainput-element>
+					
+					<datainput-element 
+						label="Cognome"
+						inputtype="text"
+						inputvalue="">
+					</datainput-element>
+					
+					<datainput-element 
+						label="Contratto a tempo indeterminato"
+						inputtype="checkbox"
+						inputvalue="true">
+					</datainput-element>
+				
+				</grid-element>
+			</div>
+		</tabpane-element>		
+	</template>
+	
+	<script>		
+		var sampledata = [
+			{'nome':'Mario', 'cognome':'Rossi', 'cti':true},
+			{'nome':'Anna', 'cognome':'Verdi', 'cti':false},
+			{'nome':'Giulio', 'cognome':'Bianchi', 'cti':true},
+			{'nome':'Franco', 'cognome':'Marroni', 'cti':false}
+		];  
+		
+		var searchparams = {
+			nome: '',
+			cognome: ''
+		}
+		
+		Polymer({
+			is: "app-element",
+			properties: {
+				sampledata: {
+					type: Object,
+					value: sampledata
+				},
+				searchparams: {
+					type: Object,
+					value: searchparams
+				}
+			},
+			search: function(e) {
+				console.log(this.searchparams.nome);
+			}			
+		});	
+	</script>
+	
+</dom-module>

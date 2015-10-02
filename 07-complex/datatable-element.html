@@ -11,8 +11,12 @@
 				caption: {
 					type: String
 				},
-				dataproviderfunction: {
-					type: String
+				data: {
+					type: Object
+				},
+				searchparams: {
+					type: Object,
+					observer: 'searchparamsChanged'
 				},
 				currentrow: {
 					type: Object,
@@ -20,8 +24,7 @@
 				}	
 			},
 			attached: function() {
-		  		var that = this;
-				this.dataproviderfunctionCall = new Function('return ' + this.dataproviderfunction);
+		  		var that = this;				
 				$('#dt').puidatatable({
 					caption: this.caption,
 					columns: [
@@ -29,7 +32,7 @@
 						{field:'cognome', headerText: 'Cognome', sortable:true},
 						{field:'cti', headerText: 'Contr. Tempo Indet.', sortable:true}
 					],
-					datasource: this.dataproviderfunctionCall(),
+					datasource: that.data, 
 					selectionMode: 'single',
 					rowSelect: function(event, data) {						
 						that.currentrow = data;
@@ -39,6 +42,9 @@
 			},
 			currentrowChanged: function(newValue, oldValue) {
 				console.log("currentrowChanged - old value: " + oldValue + " - new value: " + newValue);
+			},
+			searchparamsChanged: function(newValue, oldValue) {
+				console.log("searchparams - old value: " + oldValue + " - new value: " + newValue.nome + ' ' + newValue.cognome);
 			}
 		});	
 	</script>
