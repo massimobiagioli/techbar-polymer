@@ -1,7 +1,7 @@
 <dom-module id="app-element">
 	
 	<template>
-		<tabpane-element>
+		<tabpane-element id="tabpane">
 			<div class="ricerca">
 				<grid-element>
 				
@@ -19,14 +19,17 @@
 				
 				</grid-element>
 				
-				<button on-click="search">Ricerca</button>				
+				<br/>
+				
+				<button id="showResults" on-click="search">Mostra Risultati</button>				
 			</div>
 			
 			<div class="risultati">        
 				<datatable-element 
 					caption="Elenco persone"
 					data="[[sampledata]]",
-					searchparams="[[searchparams]]">
+					searchparams="[[searchparams]]"
+					currentrow="{{currentrow}}">
 				</datatable-element>  
 			</div>
 			
@@ -36,19 +39,19 @@
 					<datainput-element 
 						label="Nome"
 						inputtype="text"
-						inputvalue="">
+						inputvalue="[[currentrow.nome]]">
 					</datainput-element>
 					
 					<datainput-element 
 						label="Cognome"
 						inputtype="text"
-						inputvalue="">
+						inputvalue="[[currentrow.cognome]]">
 					</datainput-element>
 					
 					<datainput-element 
 						label="Contratto a tempo indeterminato"
 						inputtype="checkbox"
-						inputvalue="true">
+						inputvalue="[[currentrow.cti]]">
 					</datainput-element>
 				
 				</grid-element>
@@ -79,11 +82,21 @@
 				searchparams: {
 					type: Object,
 					value: searchparams
+				},
+				currentrow: {
+					type: Object,
+					observer: 'currentrowChanged'
 				}
 			},
+			attached: function() {
+		  		$('#showResults').puibutton();
+			},
 			search: function(e) {
-				console.log(this.searchparams.nome);
-			}			
+				$('#tabpane')[0].showTabSearch();								
+			},
+			currentrowChanged: function(newValue, oldValue) {				
+				$('#tabpane')[0].showTabDetail();
+			},			
 		});	
 	</script>
 	

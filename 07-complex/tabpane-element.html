@@ -29,12 +29,14 @@
 		Polymer({
 			is: "tabpane-element",
 			attached: function() {
-		    	$('#default').puitabview({
-					change: function(event, ui) {
-						//
-					}
-				});
-		  	}
+		    	$('#default').puitabview();
+		  	},
+			showTabSearch: function() {
+				$('#default').puitabview('select', 1);
+			},
+			showTabDetail: function() {
+				$('#default').puitabview('select', 2);
+			}
 		});	
 	</script>
 	
